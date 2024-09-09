@@ -67,7 +67,7 @@ class ObjectCounter:
         self.draw_tracks = draw_tracks
 
         # Check if environment supports imshow
-        self.env_check = check_imshow(warn=True)
+        self.env_check = check_imshow(warn=True) if view_img else False
 
         # Initialize counting region
         if len(self.reg_pts) == 2:
