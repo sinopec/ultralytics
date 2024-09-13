@@ -611,7 +611,8 @@ class WorldModel(DetectionModel):
         if (
             not getattr(self, "clip_model", None) and cache_clip_model
         ):  # for backwards compatibility of models lacking clip_model attribute
-            self.clip_model = clip.load("ViT-B/32")[0]
+            clip_model = clip.load("ViT-B/32")[0]
+            object.__setattr__(self, 'clip_model', clip_model)
         model = self.clip_model if cache_clip_model else clip.load("ViT-B/32")[0]
         device = next(model.parameters()).device
         text_token = clip.tokenize(text).to(device)
