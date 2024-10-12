@@ -37,7 +37,7 @@ class BaseSolution:
         self.names = self.model.names
 
         # Initialize environment and region setup
-        self.env_check = check_imshow(warn=True)
+        self.env_check = check_imshow(warn=True) if self.CFG["show"] else False
         self.track_history = defaultdict(list)
 
     def extract_tracks(self, im0):
